@@ -20,6 +20,6 @@ app.use(villagerRouter)
 
 
 
-app.listen(3000, ()=>{
-    console.log("server listening on 3000")
+app.listen(process.env.PORT || 3000, ()=>{
+    console.log("server running")
 })
