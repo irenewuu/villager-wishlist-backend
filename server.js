@@ -17,9 +17,6 @@ mongoose.connect(config.MONGODB_URL, (e)=>{
 app.use(villagerRouter)
 
 
-
-
-
 app.listen(process.env.PORT || 3000, ()=>{
     console.log("server running")
 })

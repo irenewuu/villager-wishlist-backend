@@ -4,8 +4,14 @@ const getVillagers = (req, res)=>{
     Villager.find({}, (err, data)=>{
         if(err) return res.status(500).send("Something went wrong in db")
         // console.log(res.json(data))
-        res.json(data)
+        res.json({
+            "connection": "success",
+            "length": data.length,
+            "data": data
+        })
     })
+    // comment out this limit to get all 480+ villagers
+    // .limit(10)
 }
 
 const getVillagerById = (req, res) => {
