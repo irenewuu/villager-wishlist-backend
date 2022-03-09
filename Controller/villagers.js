@@ -1,17 +1,12 @@
 const Villager = require("../Models/villagers")
 
 const getVillagers = (req, res)=>{
-    Villager.find({}, (err, data)=>{
+    console.log(req.query)
+    Villager.find({name: {$regex:req.query.name}}).skip(Number(req.query.offset)).limit(10).exec((err, data)=>{
         if(err) return res.status(500).send("Something went wrong in db")
-        // console.log(res.json(data))
-        res.json({
-            "connection": "success",
-            "length": data.length,
-            "data": data
-        })
+        console.log(data)
+        res.json(data)
     })
-    // comment out this limit to get all 480+ villagers
-    // .limit(10)
 }
 
 const getVillagerById = (req, res) => {
