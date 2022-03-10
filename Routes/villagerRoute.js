@@ -1,9 +1,10 @@
 const express = require("express");
 const router = express.Router();
 const { getVillagers, getVillagerById } = require("../Controller/villagers")
+const authoriseUser = require('../Auth/auth')
 
 
-router.get("/search", getVillagers);
+router.get("/search", authoriseUser, getVillagers);
 router.get("/profile/:_id", getVillagerById)
 
 

@@ -16,13 +16,14 @@ UserSchema.pre('save', function (next) {
     
         bcrypt.genSalt(10, function(err, salt) {
             bcrypt.hash(user.password, salt, function(err, hash) {
-                // Store hash in your password DB.
+                // Store hash in your password DB
                 user.password = hash
                 next()
             });
         });
 })
 
+// compare password function
 UserSchema.methods.comparePassword = function(password) {
     // returns true or false
     return bcrypt.compareSync(password, this.password)
