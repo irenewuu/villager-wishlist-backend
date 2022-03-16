@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 
 
 const UserSchema = new Schema({
-    username: String,
+    name: String,
     email: String,
     password: String
 })
@@ -29,6 +29,6 @@ UserSchema.methods.comparePassword = function(password) {
     return bcrypt.compareSync(password, this.password)
 }
 
-const User = mongoose.model("user", UserSchema)
+const User = mongoose.model("users", UserSchema)
 
 module.exports = User
