@@ -10,9 +10,10 @@ const signup = (req, res) => {
     user.email = req.body.email;
     user.password = req.body.password;
 
-    user.save((err, done)=>{
+    user.save((err, user)=>{
         if(err) return res.status(500).send('Signup failed')
-        res.status(201).send("Signup successful")
+        const token = jwt.sign({id: user._id}, 'thisismysecret')
+        res.status(201).send(token)
     })
 }
 
