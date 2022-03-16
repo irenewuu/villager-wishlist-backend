@@ -1,12 +1,12 @@
 const jwt = require("jsonwebtoken")
 
-const authriseUser = (req,res,next) =>{
+const authorizeUser = (req,res,next) =>{
   jwt.verify(req.query.token,'thisismysecret', (err,data)=>{
-    if(err) return res.send("not authorized")
+    if(err) return res.status(500).send("not authorized")
     // console.log(data)
     req.user = data
     next()
   })
 }
 
-module.exports = authriseUser
+module.exports = authorizeUser
