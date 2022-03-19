@@ -1,12 +1,20 @@
 const Wishlist = require("../Models/wishlist")
+const Villager = require("../Models/villagers") 
+const User = require("../Models/user")
 
 const getWishlist = (req, res) => {
+    // Villager.findById()
+    
     Wishlist.find({})
-    .populate('owner')
-    .exec((err, villagers)=> {
+    .populate('villager')
+    .exec((err, data)=> {
         if(err) return res.status(404).send("wishlist not found");
-        res.json(villagers)
+        console.log(data, "whats in here")
+        // console.log(data[1].villager, "villager id?")
+        res.json(data)
     })
+
+
 }
 
 const addVillager = (req, res) => {
