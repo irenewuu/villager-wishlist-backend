@@ -6,7 +6,7 @@ const getVillagers = (req, res)=>{
         res.json(data)
     })
     // comment out this limit to get all 480+ villagers
-    // .limit(10)
+    .limit(10)
 }
 
 const getVillagerById = (req, res) => {
