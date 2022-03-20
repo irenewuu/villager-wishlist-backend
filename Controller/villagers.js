@@ -5,8 +5,8 @@ const getVillagers = (req, res)=>{
         if(err) return res.status(500).send("Something went wrong in db")
         res.json(data)
     })
-    // comment out this limit to get all 480+ villagers
-    .limit(10)
+    // comment out this limit to get all 390+ villagers
+    // .limit(10)
 }
 
 const getVillagerById = (req, res) => {
