@@ -17,8 +17,6 @@ mongoose.connect(config.MONGODB_URL, (e)=>{
 
 app.use(villagerRouter)
 app.use(userRouter)
-
-
 app.use(wishlistRouter)
 
 app.listen(process.env.PORT || 3000, ()=>{
