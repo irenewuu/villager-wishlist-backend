@@ -11,16 +11,16 @@ app.use(cors());
 app.use(express.json());
 
 mongoose.connect(config.MONGODB_URL, (err)=>{
-    if(err) return console.log(err, " connection success")
+    if(err) return console.log(err, " connection unsuccessful")
     console.log("connection success")
 })
-
 
 app.use(villagerRouter)
 app.use(userRouter)
 app.use(wishlistRouter)
 
 
-app.listen(process.env.PORT || 3000, ()=>{
+app.listen(process.env.PORT || 3000, (err)=>{
+    if(err) return console.log(err, "port error")
     console.log("server running")
 })
