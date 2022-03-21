@@ -49,8 +49,8 @@ app.get('/', (req, res) => {
     console.log('a user connected', socket.id);
 
     // io.emit("change");
-    socket.on("alert all", ()=>{
-        io.emit("change", socket.id);
+    socket.on("alert all", (txt, id)=>{
+        io.emit("change", socket.id, txt, id);
     })
   });
 
