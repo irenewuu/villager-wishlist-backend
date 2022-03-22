@@ -5,7 +5,6 @@ const getVillagers = (req, res)=>{
         if(err) return res.status(500).send("Something went wrong in db")
         res.json(data)
     })
-    // .limit(10)
 }
 
 const getVillagerById = (req, res) => {
