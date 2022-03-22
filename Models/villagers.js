@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
 const villagerSchema = new Schema({
-    _id: {type: mongoose.Schema.ObjectId},
+    // _id: {type: mongoose.Schema.ObjectId},
     name: String,
     url: String,
     id: String,

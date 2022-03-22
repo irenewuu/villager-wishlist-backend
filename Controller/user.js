@@ -12,7 +12,7 @@ const signup = (req, res) => {
 
     user.save((err, user)=>{
         if(err) return res.status(500).send('Signup failed')
-        const token = jwt.sign({id: user._id}, 'thisismysecret')
+        const token = jwt.sign({id: user._id}, 'thisismysecret') // secret in config file plz
         res.status(201).send(token)
     })
 }
@@ -23,7 +23,7 @@ const login = (req, res) => {
 
         if(user.comparePassword(req.body.password)) {
             // token generation
-            const token = jwt.sign({id: user._id}, 'thisismysecret')
+            const token = jwt.sign({id: user._id}, 'thisismysecret') // secret in config file plz
             res.send(token)
         } else{
             res.send("could not login")
@@ -35,5 +35,3 @@ module.exports = {
     signup,
     login
 }
-
-// 40min

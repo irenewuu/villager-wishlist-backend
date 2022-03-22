@@ -2,7 +2,7 @@ const Wishlist = require("../Models/wishlist")
 
 // get all the villagers in the users wishlist
 const getWishlist = (req, res) => {
-    // console.log(req.query.user, "user?")
+    console.log(req.user, "user?")
     Wishlist.find({user: req.user.id}, (err, data)=> {
         if(err ) return res.status(500).send("wishlist not found");
         res.status(200).json(data)

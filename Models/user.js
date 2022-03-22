@@ -2,7 +2,7 @@ const mongoose = require("mongoose")
 const Schema = mongoose.Schema;
 const bcrypt = require('bcryptjs');
 
-
+// ppl with same email can signup -- unique plz
 const UserSchema = new Schema({
     name: String,
     email: String,
