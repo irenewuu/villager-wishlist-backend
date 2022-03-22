@@ -3,8 +3,6 @@ const jwt = require('jsonwebtoken')
 
 
 const signup = (req, res) => {
-    // if u do like this then u can just call req.body body
-// const signup = ({body}, res) => {
     const user = new User();
     user.name = req.body.name;
     user.email = req.body.email;
@@ -22,7 +20,6 @@ const login = (req, res) => {
         if(err || !user) return res.status(404).send('user not found')
 
         if(user.comparePassword(req.body.password)) {
-            // token generation
             const token = jwt.sign({id: user._id}, 'thisismysecret')
             res.send(token)
         } else{
