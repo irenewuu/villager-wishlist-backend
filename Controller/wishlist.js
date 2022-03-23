@@ -2,8 +2,9 @@ const Wishlist = require("../Models/wishlist")
 
 // get all the villagers in the users wishlist
 const getWishlist = (req, res) => {
-    Wishlist.find({user: req.query.user}, (err, data)=> {
-        if(err) return res.status(500).send("wishlist not found");
+    console.log(req.user, "user?")
+    Wishlist.find({user: req.user.id}, (err, data)=> {
+        if(err ) return res.status(500).send("wishlist not found");
         res.status(200).json(data)
     })
     .populate('villager')
@@ -13,7 +14,7 @@ const getWishlist = (req, res) => {
 const addVillager = (req, res) => {
     var wishlist = new Wishlist()
     wishlist.villager = req.body.villager
-    wishlist.user = req.body.user
+    wishlist.user = req.user.id
 
     wishlist.save((err, data)=> {
         if(err) return res.status(500).send("unable to add to wishlist")
