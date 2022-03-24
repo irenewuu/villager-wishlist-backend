@@ -25,7 +25,7 @@ app.use(villagerRouter)
 app.use(userRouter)
 app.use(wishlistRouter)
 
-var whitelist = ["http://localhost:3001", 'https://villager-wishlist.herokuapp.com']
+var whitelist = ["http://localhost:3001", 'https://acnh-villagerwishlist.vercel.app/']
 var corsOptions = {
   origin: function (origin, callback) {
     if (whitelist.indexOf(origin) !== -1) {
