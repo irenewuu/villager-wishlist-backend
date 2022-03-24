@@ -25,10 +25,17 @@ app.use(villagerRouter)
 app.use(userRouter)
 app.use(wishlistRouter)
 
+var whitelist = ["http://localhost:3001", 'https://villager-wishlist.herokuapp.com']
 var corsOptions = {
-  //   origin:["http://localhost:3001"],
-    allowedHeaders:["Access-Control-Allow-Origin"],
-    credentials:true
+  origin: function (origin, callback) {
+    if (whitelist.indexOf(origin) !== -1) {
+      callback(null, true)
+    } else {
+      callback(new Error('Not allowed by CORS'))
+    }
+  },
+  allowedHeaders:["Access-Control-Allow-Origin"],
+  credentials:true
 }
 const io = new Server(server, cors(corsOptions)
 );
