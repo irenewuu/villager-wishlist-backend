@@ -25,13 +25,13 @@ app.use(villagerRouter)
 app.use(userRouter)
 app.use(wishlistRouter)
 
-const io = new Server(server, cors()
-//   {cors:{
+var corsOptions = {
   //   origin:["http://localhost:3001"],
-  //   allowedHeaders:["Access-Control-Allow-Origin"],
-  //   credentials:true
-  // }}
-  );
+    allowedHeaders:["Access-Control-Allow-Origin"],
+    credentials:true
+}
+const io = new Server(server, cors(corsOptions)
+);
   
   
   // chat function .......................................................
