@@ -23,7 +23,7 @@ const addVillager = (req, res) => {
 
 // remove villager form users wishlist
 const removeVillager = (req, res) => {
-    Wishlist.findOneAndDelete({villager: req.query.villager, user: req.query.user}, (err, data)=>{
+    Wishlist.findOneAndDelete({villager: req.query.villager, user: req.user.id}, (err, data)=>{
         if(err) return res.status(500).send("unable to delete from wishlist")
         res.status(200).json(data)
     })
