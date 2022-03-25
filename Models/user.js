@@ -10,16 +10,14 @@ const UserSchema = new Schema({
 })
 
 UserSchema.pre('save', function (next) {
-
     const user = this
-    
-        bcrypt.genSalt(10, function(err, salt) {
-            bcrypt.hash(user.password, salt, function(err, hash) {
-                // Store hash in your password DB
-                user.password = hash
-                next()
-            });
+    bcrypt.genSalt(10, function(err, salt) {
+        bcrypt.hash(user.password, salt, function(err, hash) {
+            // Store hash in your password DB
+            user.password = hash
+            next()
         });
+    });
 })
 
 // compare password function
