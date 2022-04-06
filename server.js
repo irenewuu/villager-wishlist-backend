@@ -2,7 +2,6 @@ require("dotenv").config()
 const express = require('express')
 const mongoose = require('mongoose')
 const app = express()
-// const config = require('./config')
 const cors = require('cors')
 const PORT = process.env.PORT || 3000;
 
@@ -18,9 +17,7 @@ const wishlistRouter = require("./Routes/wishlistRoute");
 app.use(cors());
 app.use(express.json());
 
-mongoose.connect(process.env.MONGODB_URL 
-  // || config.MONGODB_URL
-  , (err)=>{
+mongoose.connect(process.env.MONGODB_URL, (err)=>{
   if(err) return console.log(err, " connection unsuccessful")
   console.log("connection success")
 })
